@@ -1,3 +1,7 @@
+## Hi! It a modified and improved Server for Version 41!
+
+## It a fork of https://github.com/CrazorTheCat/BSDS-V41
+
 ANDROID : https://www.mediafire.com/file/fkd05u3xyv0amks/com.projectbsds.v41131.apk/file
 
 ## Requirements: ##
