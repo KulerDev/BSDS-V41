@@ -242,7 +242,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeString() #?
         self.writeVint(0) #?
         self.writeVint(0) #Defeates?
-        self.writeVint(3) #Total Wins
+        self.writeVint(3) #Wins In Event Choose
         self.writeVint(0)  # Modifiers
         self.writeVint(0) #Wins
         self.writeVint(0) #???(Dont Change!)
@@ -270,7 +270,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeString() #?
         self.writeVint(0) #?
         self.writeVint(0) #Defeates?
-        self.writeVint(3) #Total Wins
+        self.writeVint(3) #Wins In Event Choose
         self.writeVint(0)  # Modifiers
         self.writeVint(0) #Wins
         self.writeVint(0) #???(Dont Change!)
@@ -298,7 +298,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeString() #?
         self.writeVint(0) #?
         self.writeVint(0) #Defeates?
-        self.writeVint(3) #Total Wins
+        self.writeVint(3) #Wins In Event Choose
         self.writeVint(0)  # Modifiers
         self.writeVint(0) #Wins
         self.writeVint(0) #???(Dont Change!)
@@ -408,7 +408,7 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeLong(10008, 501)
         self.writeLong(65, 2)
-        self.writeLong(1, 41000038)  # ThemeID
+        self.writeLong(1, 41000037)  # ThemeID
         self.writeLong(60, 36270)
         self.writeLong(66, 1)
         self.writeLong(61, 36270)  # SupportDisabled State | if 36218 < state its true
