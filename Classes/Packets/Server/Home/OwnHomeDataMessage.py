@@ -226,7 +226,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(30)
         self.writeVint(31)
         self.writeVint(32)
-        
+
         events = json.loads(open("events.json", 'r').read())
         
         self.writeVint(len(events) + 5) # Events Count(5 it a ChampionShip(3 Stages) and ClubLeague(PowerMatch and Default Game Mode))
@@ -401,8 +401,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeBoolean(False)
         self.writeBoolean(False)
         # ClubLeague Slots End Array #
-        
-        
+
         self.writeVint(0) # Comming Events
 
         self.writeVint(10)  # Brawler Upgrade Cost
