@@ -9,7 +9,7 @@ class LobbyInfoMessage(PiranhaMessage):
 
     def encode(self, fields, player):
         self.writeVint(ClientsManager.GetCount())
-        self.writeString("Project BSDS\n"f"Version: {player.ClientVersion}")
+        self.writeString("Brawl Stars\n"f"Version: {player.ClientVersion}")
         self.writeVint(0)
 
     def decode(self):
