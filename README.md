@@ -2,7 +2,7 @@
 
 ## It a fork of https://github.com/CrazorTheCat/BSDS-V41
 
-ANDROID(Arm-v8a Only) : https://www.mediafire.com/file/775ijd21sbsyb38/com.projectbsds.v41150.apk/file
+ANDROID : https://www.mediafire.com/file/775ijd21sbsyb38/com.projectbsds.v41150.apk/file
 
 ## Requirements: ##
 1. pip install numpy
