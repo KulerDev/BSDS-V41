@@ -201,36 +201,39 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeVint(25) # Count
 
-        self.writeVint(1)
-        self.writeVint(2)
-        self.writeVint(3)
-        self.writeVint(4)
-        self.writeVint(5)
-        self.writeVint(6)
-        self.writeVint(7)
-        self.writeVint(8)
-        self.writeVint(9)
-        self.writeVint(10)
-        self.writeVint(11)
-        self.writeVint(12)
-        self.writeVint(13)
-        self.writeVint(14)
-        self.writeVint(15)
-        self.writeVint(16)
-        self.writeVint(17)
-        self.writeVint(20)
-        self.writeVint(21)
-        self.writeVint(22)
-        self.writeVint(23)
-        self.writeVint(24)
-        self.writeVint(30)
-        self.writeVint(31)
-        self.writeVint(32)
+        # Event Slots IDs Array Start #
+        self.writeVint(1) # Gem Grab
+        self.writeVint(2) # Showdown
+        self.writeVint(3) # Daily Events
+        self.writeVint(4) # Team Events
+        self.writeVint(5) # Duo Showndown
+        self.writeVint(6) # Team Events 2
+        self.writeVint(7) # Special Events(Big Game and other…)
+        self.writeVint(8) # Solo Events (As well as Seasonal Events)
+        self.writeVint(9) # Power Play (As well as Seasonal Events)
+        self.writeVint(10) # Seasonal Events
+        self.writeVint(11) # Seasonal Events 2
+        self.writeVint(12) # Candidates of The Day
+        self.writeVint(13) # Winner of The Day
+        self.writeVint(14) # Solo Mode Power League
+        self.writeVint(15) # Team Mode Power League
+        self.writeVint(16) # Club League(Default Map)
+        self.writeVint(17) # Club League(Power Match)
+        self.writeVint(20) # Championship Challenge (Stage 1)
+        self.writeVint(21) # Championship Challenge (Stage 2)
+        self.writeVint(22) # Championship Challenge (Stage 3)
+        self.writeVint(23) # Championship Challenge (Stage 4)
+        self.writeVint(24) # Championship Challenge (Stage 5)
+        self.writeVint(30) # Team Events 3?
+        self.writeVint(31) # Team Events 4?
+        self.writeVint(32) # Team Events 5?
+        # Event Slots IDs Array End #
 
-        events = json.loads(open("events.json", 'r').read())
+        events = json.loads(open("events.json", 'r').read()) # import json
         
         self.writeVint(len(events) + 5) # Events Count(5 it a ChampionShip(3 Stages) and ClubLeague(PowerMatch and Default Game Mode))
         for event in events:
+              # Default Slots Start Array #
               self.writeVint(0)
               self.writeVint(events.index(event) + 1)  # EventType
               self.writeVint(event['CountdownTimer'])  # EventsBeginCountdown
@@ -257,9 +260,10 @@ class OwnHomeDataMessage(PiranhaMessage):
               self.writeVint(-1)
               self.writeBoolean(False)
               self.writeBoolean(False)
+              # Default Slots End Array #
 
-        # ChampionShip Slot Start Array #
-        # ChampionShip Stage 1 #
+        # Championship Challenge Slot Start Array #
+        # Championship Challenge Stage 1 #
         self.writeVint(0)
         self.writeVint(20)  # EventType
         self.writeVint(0)  # EventsBeginCountdown
@@ -287,7 +291,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeBoolean(False)
         self.writeBoolean(False)
         
-        # ChampionShip Stage 2 #   
+        # Championship Challenge Stage 2 #   
         self.writeVint(0)
         self.writeVint(21)  # EventType
         self.writeVint(0)  # EventsBeginCountdown
@@ -315,7 +319,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeBoolean(False)
         self.writeBoolean(False)
         
-        # ChampionShip Stage 3 #   
+        # Championship Challenge Stage 3 #   
         self.writeVint(0)
         self.writeVint(22)  # EventType
         self.writeVint(0)  # EventsBeginCountdown
@@ -342,10 +346,10 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(-1)
         self.writeBoolean(False)
         self.writeBoolean(False)
-        # ChampionShip Slots End Array #
+        # Championship Slots End Array #
         
-        # ClubLeague Slots Start Array #
-        # ClubLeague Default Map Array #
+        # Club League Slots Start Array #
+        # Club League Default Map Array #
         self.writeVint(0)
         self.writeVint(16)  # EventType
         self.writeVint(0)  # EventsBeginCountdown
@@ -373,7 +377,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeBoolean(False)
         self.writeBoolean(False)
         
-        # ClubLeague Power Match Array #
+        # Club League Power Match Array #
         self.writeVint(0)
         self.writeVint(17)  # EventType
         self.writeVint(0)  # EventsBeginCountdown
@@ -400,7 +404,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(-1)
         self.writeBoolean(False)
         self.writeBoolean(False)
-        # ClubLeague Slots End Array #
+        # Club League Slots End Array #
 
         self.writeVint(0) # Comming Events
 
