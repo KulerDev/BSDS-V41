@@ -231,7 +231,7 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         events = json.loads(open("events.json", 'r').read()) # import json
         
-        self.writeVint(len(events) + 5) # Events Count(5 it a ChampionShip(3 Stages) and ClubLeague(PowerMatch and Default Game Mode))
+        self.writeVint(len(events) + 7) # Events Count(7 it a ChampionShip(3 Stages) and ClubLeague(PowerMatch and Default Game Mode)) and PowerLeague(Solo and Team Mode)
         for event in events:
               # Default Slots Start Array #
               self.writeVint(0)
@@ -285,11 +285,11 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(9) #Total Wins
         self.writeVint(3) #?
         self.writeBoolean(False)  # ChronosTextEntry
-        self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeBoolean(False)# ???
+        self.writeBoolean(False) #???
         self.writeVint(-1)
-        self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #???
+        self.writeBoolean(False) #???
         
         # Championship Challenge Stage 2 #   
         self.writeVint(0)
@@ -313,11 +313,11 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(9) #Total Wins
         self.writeVint(3) #?
         self.writeBoolean(False)  # ChronosTextEntry
-        self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #???
+        self.writeBoolean(False) #???
         self.writeVint(-1)
-        self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #???
+        self.writeBoolean(False) #???
         
         # Championship Challenge Stage 3 #   
         self.writeVint(0)
@@ -341,11 +341,11 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(9) #Total Wins
         self.writeVint(3) #?
         self.writeBoolean(False)  # ChronosTextEntry
-        self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #???
+        self.writeBoolean(False) #???
         self.writeVint(-1)
-        self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #???
+        self.writeBoolean(False) #???
         # Championship Slots End Array #
         
         # Club League Slots Start Array #
@@ -405,6 +405,84 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeBoolean(False)
         self.writeBoolean(False)
         # Club League Slots End Array #
+        
+        # Power League Solo Mode #
+        self.writeVint(0)
+        self.writeVint(14)  # EventType
+        self.writeVint(0)  # EventsBeginCountdown
+        self.writeVint(99999)  # Timer
+        self.writeVint(0)  # tokens reward for new event
+        self.writeDataReference(15, 4)  # MapID
+        self.writeVint(-64)  # GameModeVariation
+        self.writeVint(0)  # State
+        self.writeString()
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeBoolean(False)  # Map Maker Map Structure Array
+        self.writeVint(0)
+        self.writeBoolean(True)  # Power League Data Array
+        # Power League Data Array Start #
+        self.writeVint(6) # Season
+        self.writeVint(1)
+        self.writeVint(1)
+        self.writeVint(1)
+        self.writeVint(1)
+        self.writeVint(1)
+        self.writeVint(1)
+        self.writeVint(0)
+        self.writeVint(0)
+        # Power League Data Array End #
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeBoolean(False)  # ChronosTextEntry
+        self.writeBoolean(False)
+        self.writeBoolean(False)
+        self.writeVint(-1)
+        self.writeBoolean(False)
+        self.writeBoolean(False)
+        
+        # Power League Team Mode #
+        self.writeVint(0)
+        self.writeVint(15)  # EventType
+        self.writeVint(0)  # EventsBeginCountdown
+        self.writeVint(99999)  # Timer
+        self.writeVint(0)  # tokens reward for new event
+        self.writeDataReference(15, 4)  # MapID
+        self.writeVint(-64)  # GameModeVariation
+        self.writeVint(0)  # State
+        self.writeString()
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(3)
+        self.writeVint(0)  # Modifiers
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeBoolean(False)  # Map Maker Map Structure Array
+        self.writeVint(0)
+        self.writeBoolean(True)  # Power League Data Array
+        # Power League Data Array Start #
+        self.writeVint(6) # Season
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeVint(0)
+        # Power League Data Array End #
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeBoolean(False)  # ChronosTextEntry
+        self.writeBoolean(False)
+        self.writeBoolean(False)
+        self.writeVint(-1)
+        self.writeBoolean(False)
+        self.writeBoolean(False)
 
         self.writeVint(0) # Comming Events
 
