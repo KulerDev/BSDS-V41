@@ -10,4 +10,14 @@ ANDROID : https://www.mediafire.com/file/775ijd21sbsyb38/com.projectbsds.v41150.
 
 ## Change the ip address and port (if needed) in libmeow.js located in the lib folder ##
 
-![image](https://user-images.githubusercontent.com/52799759/147313954-e3185d78-da1b-4c9c-b700-c20c58af8633.png)
+![Screenshot_2022-02-13-21-35-31-819_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769682-28fec340-f615-4ccc-8508-885c12b6c234.jpg
+
+
+![Screenshot_2022-02-13-21-35-31-819_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769535-ebf33a6e-de6b-4143-8ae9-3918b30a5c97.jpg)
+
+![Screenshot_2022-02-13-21-36-29-232_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769564-a2d5cfaa-daba-452c-808f-a51136e07c21.jpg)
+
+![Screenshot_2022-02-13-21-36-35-006_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769585-41282594-ac4e-48fd-a059-056e9f3ea451.jpg)
+
+
+
