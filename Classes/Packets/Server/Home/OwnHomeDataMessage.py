@@ -82,36 +82,67 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(0)  # Change Name Cost
         self.writeVint(0)  # Timer For the Next Name Change
 
-        self.writeVint(1) # Offers count
+        self.writeVint(2) # Offers count
 
         self.writeVint(1)  # RewardCount
         for i in range(1):
             self.writeVint(6)  # ItemType
-            self.writeVint(0)
+            self.writeVint(0) # Amount
             self.writeDataReference(0)  # CsvID
-            self.writeVint(0)
+            self.writeVint(0) # SkinID
 
-        self.writeVint(0)
-        self.writeVint(666)
-        self.writeVint(950400)
+        self.writeVint(0) # Currency(0-Gems,1-Gold,3-Starpoints)
+        self.writeVint(666) #Cost
+        self.writeVint(950400) #Time
         self.writeVint(2)
         self.writeVint(0)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #Hide?
         self.writeVint(3917)
         self.writeVint(0)
-        self.writeBoolean(False)
+        self.writeBoolean(False) #Daily Offer
         self.writeVint(49)
         self.writeInt(0)
-        self.writeString("Unlock all skins")
+        self.writeString("Unlock all skins") # Text
         self.writeBoolean(False)
         self.writeString()
         self.writeVint(-1)
-        self.writeBoolean(False)
+        self.writeBoolean(False) # This purchase is already being processed
         self.writeVint(0)
         self.writeVint(0)
         self.writeString()
+        self.writeBoolean(False) # One time offer
+        self.writeBoolean(False) # Claimed
+        
+        
+        self.writeVint(1)  # RewardCount
+        for i in range(1):
+            self.writeVint(9)  # ItemType
+            self.writeVint(100) # Amount
+            self.writeDataReference(0)  # CsvID
+            self.writeVint(0) # SkinID
+
+        self.writeVint(0) # Currency(0-Gems, 1-Gold, 3-Starpoints)
+        self.writeVint(0) #Cost
+        self.writeVint(950400) #Time
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeBoolean(False) # Hide?
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeBoolean(False) # Daily Offer
+        self.writeVint(0)
+        self.writeInt(0)
+        self.writeString("Gift!") # Text
         self.writeBoolean(False)
-        self.writeBoolean(False)
+        self.writeString()
+        self.writeVint(0)
+        self.writeBoolean(False) # This purchase is already being processed
+        self.writeVint(0)
+        self.writeVint(0)
+        self.writeString()
+        self.writeBoolean(False) # One time offer
+        self.writeBoolean(False) # Claimed
+        
 
         self.writeVint(0)
 
@@ -143,11 +174,11 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeLong(14, 0)  # CoinsGained
         self.writeLong(15, 0)  # AgeScreen | 3 = underage (disable social media) | 1 = age popup
         self.writeLong(16, 1)
-        self.writeLong(17, 1)  # TeamChatMuted
+        self.writeLong(17, 0)  # TeamChatMuted
         self.writeLong(18, 1)  # EsportButton
-        self.writeLong(19, 1)  # ChampionShipLivesBuyPopup
+        self.writeLong(19, 0)  # ChampionShipLivesBuyPopup
         self.writeLong(20, 0)  # GemsGained
-        self.writeLong(21, 1)  # LookingForTeamState
+        self.writeLong(21, 0)  # LookingForTeamState
         self.writeLong(22, 1)
         self.writeLong(24, 1)  # Have already watched club league stupid animation
 
@@ -210,7 +241,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVint(6) # Team Events 2
         self.writeVint(7) # Special Events(Big Game and other…)
         self.writeVint(8) # Solo Events (As well as Seasonal Events)
-        self.writeVint(9) # Power Play (As well as Seasonal Events)
+        self.writeVint(9) # Power Play (Not working)
         self.writeVint(10) # Seasonal Events
         self.writeVint(11) # Seasonal Events 2
         self.writeVint(12) # Candidates of The Day
@@ -246,7 +277,11 @@ class OwnHomeDataMessage(PiranhaMessage):
               self.writeVint(0)
               self.writeVint(0)
               self.writeVint(0)
-              self.writeVint(event['Modifier'])  # Modifiers
+              if event['Modifier'] > 0:
+                 self.writeBoolean(True)
+                 self.writeVint(event['Modifier']) #Modifer ID
+              else:
+                 self.writeBoolean(False)
               self.writeVint(0)
               self.writeVint(0)
               self.writeBoolean(False)  # Map Maker Map Structure Array
@@ -520,7 +555,7 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeLong(65, 2)
         self.writeLong(1, 41000037)  # ThemeID
         self.writeLong(60, 36270)
-        self.writeLong(66, 1)
+        self.writeLong(66, 0) # Graveyard Shift
         self.writeLong(61, 36270)  # SupportDisabled State | if 36218 < state its true
         self.writeLong(47, 41381)
         self.writeLong(29, 0)  # Skin Group Active For Campaign
