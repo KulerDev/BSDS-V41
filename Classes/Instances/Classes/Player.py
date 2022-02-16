@@ -12,8 +12,8 @@ class Player:
     Registered = False
     Thumbnail = 0
     Namecolor = 0
-    Region = "CA"
-    ContentCreator = "BSDS"
+    Region = "BY"
+    ContentCreator = "Kuler"
 
     Coins = 999999
     Gems = 999999
