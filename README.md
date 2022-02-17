@@ -12,13 +12,10 @@ ANDROID : https://www.mediafire.com/file/775ijd21sbsyb38/com.projectbsds.v41150.
 
 ## Screenshots from this server
 
-![Screenshot_2022-02-13-21-35-31-819_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769535-ebf33a6e-de6b-4143-8ae9-3918b30a5c97.jpg)
+![Screenshot_2022-02-16-23-49-25-943_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/154460896-b7a719a2-f8ff-46fe-a810-4fa758f78681.jpg)
 
-![Screenshot_2022-02-13-21-36-14-309_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769781-ce6ecd88-8eb3-4999-b80e-6f194eba9c55.jpg)
+![Screenshot_2022-02-16-23-49-38-429_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/154461247-22afba07-9669-4e89-a695-3e22b918e1d4.jpg)
 
-![Screenshot_2022-02-13-21-36-29-232_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769564-a2d5cfaa-daba-452c-808f-a51136e07c21.jpg)
+![Screenshot_2022-02-16-23-49-50-061_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/154461685-2b15869d-63e7-48ff-b80c-e726ecaed7d9.jpg)
 
-![Screenshot_2022-02-13-21-36-35-006_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/153769585-41282594-ac4e-48fd-a059-056e9f3ea451.jpg)
-
-
-
+![Screenshot_2022-02-16-23-49-58-043_com projectbsds v41150](https://user-images.githubusercontent.com/69260523/154461970-69ebc389-cac3-4802-8796-1076ee68840b.jpg)
