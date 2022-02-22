@@ -2,7 +2,7 @@
 
 ## It a fork of https://github.com/CrazorTheCat/BSDS-V41
 
-ANDROID : https://www.mediafire.com/file/775ijd21sbsyb38/com.projectbsds.v41150.apk/file
+ANDROID(Only for Arm+V8a : https://mega.nz/file/MpgC2KTK#U2abFO2IJ16zUqkbRfwrG_5veqblxrx2Eud-tmpLJxo
 
 ## Requirements: ##
 1. a brain…
