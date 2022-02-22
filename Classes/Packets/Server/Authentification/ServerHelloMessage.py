@@ -9,7 +9,7 @@ class ServerHelloMessage(PiranhaMessage):
     def encode(self, fields):
         self.writeInt(24)
         for i in range(24):
-            self.writeUInt8(i)
+            self.writeByte(i)
 
     def decode(self):
         fields = {}
