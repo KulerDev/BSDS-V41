@@ -5,8 +5,15 @@
 ANDROID : https://www.mediafire.com/file/775ijd21sbsyb38/com.projectbsds.v41150.apk/file
 
 ## Requirements: ##
-1. pip install numpy
-2. pip install bitstream
+1. a brain…
+
+## How to run ##
+
+1. download it 
+
+2. decompress it
+
+3. open the folder and run Core.py
 
 ## Change the ip address and port (if needed) in libmeow.js located in the lib folder ##
 
