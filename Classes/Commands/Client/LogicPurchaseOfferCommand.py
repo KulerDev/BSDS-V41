@@ -67,14 +67,14 @@ class LogicPurchaseOfferCommand(LogicCommand):
 
     def encode(self, fields):
         LogicCommand.encode(self, fields)
-        self.writeVint(0)
+        self.writeVInt(0)
         self.writeDataReference(0)
         return self.messagePayload
 
     def decode(self, calling_instance):
         fields = {}
         LogicCommand.decode(calling_instance, fields, False)
-        fields["Unk1"] = calling_instance.readVint()
+        fields["Unk1"] = calling_instance.readVInt()
         fields["Unk2"] = calling_instance.readDataReference()
         LogicCommand.parseFields(fields)
         return fields
@@ -85,8 +85,88 @@ class LogicPurchaseOfferCommand(LogicCommand):
             player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
             for i,v in player_data["OwnedBrawlers"].items():
                 v["Skins"] = OwnedBrawlersLatest[int(i)]["Skins"]
+            player_data["Gems"] = player_data["Gems"] - 666
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+        if fields["Unk1"] == 2:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            player_data["TokensDoubler"] = player_data["TokensDoubler"] + 1000
+            player_data["OwnedPins"].append(47)
+            for i,v in player_data["OwnedBrawlers"].items():
+                v["Skins"].append(376)
+            player_data["Gems"] = player_data["Gems"] -109
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+        if fields["Unk1"] == 4:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            player_data["Gold"] = player_data["Gold"] + 142
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+        if fields["Unk1"] == 1:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            player_data["Coins"] = player_data["Coins"] + 1000
+            player_data["Gems"] = player_data["Gems"] + 250
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+        if fields["Unk1"] == 5:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            for i,v in player_data["OwnedBrawlers"].items():
+                try:
+                	if v["CardID"] == 368:
+                		v["PowerPoints"] = v["PowerPoints"] + 147
+                except KeyError:
+                		continue
             db_instance.updatePlayerData(player_data, calling_instance)
             Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
 
+        if fields["Unk1"] == 21:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            for i,v in player_data["OwnedBrawlers"].items():
+                v["Skins"].append(435)
+                if 433 and 434 in v["Skins"]:
+                	player_data["OwnedPins"].append(650)
+                	player_data["OwnedPins"].append(651)
+                	player_data["OwnedPins"].append(652)
+                	player_data["OwnedPins"].append(653)
+                	player_data["OwnedPins"].append(649)
+            player_data["Gems"] = player_data["Gems"] -149
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+        if fields["Unk1"] == 19:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            for i,v in player_data["OwnedBrawlers"].items():
+                v["Skins"].append(433)
+                if 435 and 434 in v["Skins"]:
+                	player_data["OwnedPins"].append(650)
+                	player_data["OwnedPins"].append(651)
+                	player_data["OwnedPins"].append(652)
+                	player_data["OwnedPins"].append(653)
+                	player_data["OwnedPins"].append(649)
+            player_data["Gems"] = player_data["Gems"] -149
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+        if fields["Unk1"] == 20:
+            db_instance = DatabaseHandler()
+            player_data = json.loads(db_instance.getPlayerEntry(calling_instance.player.ID)[2])
+            for i,v in player_data["OwnedBrawlers"].items():
+                v["Skins"].append(434)
+                if 435 and 433 in v["Skins"]:
+                	player_data["OwnedPins"].append(650)
+                	player_data["OwnedPins"].append(651)
+                	player_data["OwnedPins"].append(652)
+                	player_data["OwnedPins"].append(653)
+                	player_data["OwnedPins"].append(649)
+            player_data["Gems"] = player_data["Gems"] -149
+            db_instance.updatePlayerData(player_data, calling_instance)
+            Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
+
+        else:
+        	Messaging.sendMessage(24104, {"Socket": calling_instance.client, "ServerChecksum": 0, "ClientChecksum": 0, "Tick": 0})
     def getCommandType(self):
         return 519
