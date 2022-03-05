@@ -58,9 +58,9 @@ class OwnHomeDataMessage(PiranhaMessage):
         self.writeVInt(1)
         self.writeBoolean(True)
         self.writeVInt(player.TokensDoubler)
-        self.writeVInt(0)
-        self.writeVInt(0)
-        self.writeVInt(0)
+        self.writeVInt(999999) # TropyRoad Timer
+        self.writeVInt(999999) #PowerPlay? Timer
+        self.writeVInt(999999) # BrawlPass Timer
 
         self.writeVInt(141)
         self.writeVInt(135)
@@ -261,27 +261,46 @@ class OwnHomeDataMessage(PiranhaMessage):
 
         self.writeVInt(2)  # Brawlpass
         for i in range(8, 10):
-            self.writeVInt(i)
-            self.writeVInt(34500)
-            self.writeBoolean(True)
-            self.writeVInt(0)
+            self.writeVInt(i) # Season
+            self.writeVInt(34500) # Pass Tikens
+            self.writeBoolean(False)
+            self.writeVInt(0) # Pass Progress
 
             self.writeInt8(2)
-            self.writeInt(4294967292)
-            self.writeInt(4294967295)
-            self.writeInt(511)
+            self.writeInt(0)
+            self.writeInt(0)
+            self.writeInt(0)
             self.writeInt(0)
 
             self.writeInt8(1)
-            self.writeInt(4294967292)
-            self.writeInt(4294967295)
-            self.writeInt(511)
+            self.writeInt(0)
+            self.writeInt(0)
+            self.writeInt(0)
             self.writeInt(0)
 
         self.writeVInt(0)
 
-        self.writeBoolean(True)
-        self.writeVInt(0)
+        quests = json.loads(open("quests.json", 'r').read()) # import json
+        self.writeBoolean(True) # LogicQuests
+        self.writeVInt(len(quests)) # Quests Count
+        for x in range(1):
+        		for quests in quests:
+        			self.writeVInt(2)     # Unknown
+        			self.writeVInt(2)     # Unknown
+        			self.writeVInt(quests['MissionType'])     # Mission Type
+        			self.writeVInt(quests['AchievedGoal'])     # Achieved Goal
+        			self.writeVInt(quests['QuestGoal'])     # Quest Goal
+        			self.writeVInt(quests['TokensReward'])    # Tokens Reward
+        			self.writeVInt(2)     # Unknown
+        			self.writeVInt(quests['CurrentLevel'])     # Current level
+        			self.writeVInt(quests['MaxLevel'])     # Max level
+        			self.writeVInt(quests['Timer'])     # Timer
+        			self.writeInt8(quests['QuestState'])    # Quest State
+        			self.writeDataReference(16, quests['BrawlerID']) # Brawler(16, <BrawlerID>)
+        			self.writeVInt(quests['GameMode'])     # GameMode
+        			self.writeVInt(2)     # Unknown
+        			self.writeVInt(2)     # Unknown
+        			self.writeVInt(2)     # Unknown
 
         self.writeBoolean(True)
         self.writeVInt(ownedPinsCount + ownedThumbnailCount)  # Vanity Count
@@ -720,7 +739,18 @@ class OwnHomeDataMessage(PiranhaMessage):
             self.writeDataReference(16, brawlerID)
             self.writeVInt(brawlerInfo["PowerLevel"] - 1)
 
-        self.writeVInt(0)
+        # Brawlers Star Powers Array Start #
+        allStarpowers = player.allStarpowers
+        self.writeVInt(len(allStarpowers))  # Count
+        if brawlerInfo["PowerLevel"] >= 9:
+            for x in allStarpowers:
+            	self.writeDataReference(23, x)  # Cards ID
+            	self.writeVInt(1)  # Star Power Unlocked State
+        else:
+        	for x in allStarpowers:
+        	   self.writeDataReference(23, x)  # Cards ID
+        	   self.writeVInt(0)  # Star Power Unlocked State
+        # Brawlers Star Powers Array End #
 
         self.writeVInt(ownedBrawlersCount)
 
